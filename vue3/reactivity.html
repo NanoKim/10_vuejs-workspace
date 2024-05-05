@@ -1,0 +1,27 @@
+<div id="app">
+  <!-- 여기에 뭐가 렌더링 된다. -->
+</div>
+
+<script>
+  var data = {
+    message: 10,
+    num: 20,
+  }
+
+  function render(sth) {
+    var div = document.querySelector('#app');
+    div.innerHTML = sth;
+  }
+
+  var app = new Proxy(data, {
+    get() { // get : data 객체에 접근할 때 마다 수행할 내용
+      console.log('값 접근')
+    },
+    set(target, prop, newValue) { // set : data 객체에 접근하여 값 갱신
+      console.log('값 갱신')
+      target[prop] = newValue;
+      // '객체' 의 '속성' 값에 'newValue' 집어넣기
+      render(newValue);
+    }
+  })
+</script>
