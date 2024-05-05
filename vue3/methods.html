@@ -2,6 +2,7 @@
 <div id="app">
   <p>{{ count }}</p>
   <button v-on:click="addCount">+</button>
+  <!-- 버튼을 클릭할 때 마다 methods를 실행 -->
 </div>
 
 <!-- JavaScript -->
@@ -15,8 +16,8 @@
     },
     methods: {
       addCount() {
-        this.count++;
+        this.count++; // this : createApp 에 접근하겠다는 의미
       }
     }
-  }).mount('#app');
+  }).mount('#app'); // 생성한 인스턴스를 어느 태그에 mount 할 것인지
 </script>
